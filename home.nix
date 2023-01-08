@@ -38,6 +38,9 @@
     enableCompletion = true;
     enableAutosuggestions = true;
     enableSyntaxHighlighting = false;
+    initExtra = ''
+      export COLORTERM=truecolor
+    '';
   };
   programs.fzf.enable = true;
   programs.starship.enable = true;
