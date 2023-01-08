@@ -64,4 +64,16 @@
       enable = true;
     };
   };
+  programs.helix = {
+    enable = true;
+    settings = {
+      theme = "dracula";
+    };
+    languages = [
+      {
+        name = "elixir";
+        auto-format = true;
+      }
+    ];
+  };
 }
