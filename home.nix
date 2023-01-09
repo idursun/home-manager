@@ -10,6 +10,7 @@
     pkgs.htop
     pkgs.ripgrep
     pkgs.bat
+    pkgs.exa
   ];
 
   # This value determines the Home Manager release that your
@@ -27,11 +28,34 @@
 
   programs.git = {
     enable = true;
+    userName = "ibrahim dursun";
     userEmail = "ibrahim@dursun.cc";
     delta.enable = true;
+    extraConfig = {
+      commit.gpgSign = true;
+      gpg = {
+        format = "ssh";
+        ssh = {
+          allowedSignersFile = "/home/ibrahim/.ssh/allowed_signers";
+        };
+      };
+      pull.rebase = true;
+      user = {
+          email = "ibrahim@dursun.cc";
+          name = "ibrahim dursun";
+          signingkey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDiajqeDzvV67w91mB9P29EMdRJrRmtn7/OGfYHUf2eeDpC0FzZG+/d26kyASA/jR3b89izIEeiF4T4DrUMkGx4J0kiaZbF+IMIy0cYxMWbZD9cg74NSBK0mXHLNLI+GnxSsiEguE6wRoswnzCYckYYfpVLwBcGEqR/1lC8MPTnBsj2MiESr79PjIZzOPJlGSdMp+LAVxt+Pdh/oukkIM2cpFjjBeiBg0jxH3P4YDCfpJ/0S9bOjSsgv8sbFo8ASFnY2MNHEJg2/ICA/DW9mvcgXBogB/Hqa+0TIOy8fSJwGMydc1qXju3ldqrPABFjPqjV1GGPDQSCAW70/y+7pu3bQxNjSCP6jB0T7s8Yyc7lDFk4eVOPybvf1mp6TYPhunmL64y6P0di2skw1+UXXt4/9o1jpslnMOUfDMWwQx+d1LL85AhKEYjDc8O0OuRBLrDY87Py6JGR4ob+xBMYWKmVN9NRUz6uXj9Mif6Wv4tNr5d1Oo0PLq756HyB+hvZgSzdHcsoILSWvJvArqn5plBFsNbBRTEy1bczwobb+lcCGIgkdISODR86AP9kjrOhcF8nQ2ncFAwoLG5dM8J1A7u0hZYrwAd7BboIBTgi9EgiuQIeHTTBEljL0Vreu4XiNvzS0a5E3lvoXT9Ua9UyGheD4XSCEDTb0w2iq9sQtBaFGQ==";
+      };
+    };
     includes = [
-      { path = "~/.gitconfig-personal";
+      { 
         condition = "gitdir:~/repositories/";
+        contents = {
+              user = {
+                  email = "ibrahim@dursun.cc";
+                  name = "ibrahim.dursun";
+                  signingkey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDiajqeDzvV67w91mB9P29EMdRJrRmtn7/OGfYHUf2eeDpC0FzZG+/d26kyASA/jR3b89izIEeiF4T4DrUMkGx4J0kiaZbF+IMIy0cYxMWbZD9cg74NSBK0mXHLNLI+GnxSsiEguE6wRoswnzCYckYYfpVLwBcGEqR/1lC8MPTnBsj2MiESr79PjIZzOPJlGSdMp+LAVxt+Pdh/oukkIM2cpFjjBeiBg0jxH3P4YDCfpJ/0S9bOjSsgv8sbFo8ASFnY2MNHEJg2/ICA/DW9mvcgXBogB/Hqa+0TIOy8fSJwGMydc1qXju3ldqrPABFjPqjV1GGPDQSCAW70/y+7pu3bQxNjSCP6jB0T7s8Yyc7lDFk4eVOPybvf1mp6TYPhunmL64y6P0di2skw1+UXXt4/9o1jpslnMOUfDMWwQx+d1LL85AhKEYjDc8O0OuRBLrDY87Py6JGR4ob+xBMYWKmVN9NRUz6uXj9Mif6Wv4tNr5d1Oo0PLq756HyB+hvZgSzdHcsoILSWvJvArqn5plBFsNbBRTEy1bczwobb+lcCGIgkdISODR86AP9kjrOhcF8nQ2ncFAwoLG5dM8J1A7u0hZYrwAd7BboIBTgi9EgiuQIeHTTBEljL0Vreu4XiNvzS0a5E3lvoXT9Ua9UyGheD4XSCEDTb0w2iq9sQtBaFGQ==";
+              };
+        };
       }
       { path = "~/.gitconfig-work";
         condition = "gitdir:~/workspace/";
@@ -59,7 +83,13 @@
     keyMode = "vi";
     shortcut = "b";
     plugins = with pkgs; [
-      tmuxPlugins.dracula
+      { plugin = tmuxPlugins.dracula; 
+        extraConfig = ''
+          set -g @dracula-show-battery false
+          set -g @dracula-show-timezone false
+          set -g @dracula-show-location false
+        '';
+      }
     ];
   };
   programs.neovim = {
