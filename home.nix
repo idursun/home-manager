@@ -9,6 +9,7 @@
   home.packages = [
     pkgs.htop
     pkgs.ripgrep
+    pkgs.bat
   ];
 
   # This value determines the Home Manager release that your
@@ -28,6 +29,14 @@
     enable = true;
     userEmail = "ibrahim@dursun.cc";
     delta.enable = true;
+    includes = [
+      { path = "~/.gitconfig-personal";
+        condition = "gitdir:~/repositories/";
+      }
+      { path = "~/.gitconfig-work";
+        condition = "gitdir:~/workspace/";
+      }
+    ];
   };
 
   programs.zsh = {
@@ -35,6 +44,7 @@
     history = {
       ignoreDups = true;
     };
+    defaultKeymap = "emacs";
     enableCompletion = true;
     enableAutosuggestions = true;
     enableSyntaxHighlighting = false;
@@ -59,10 +69,20 @@
       vim-sensible
       vim-surround
       vim-nix
+      vim-rooter
+      base16-vim
+      vim-multiple-cursors
+      vim-highlightedyank
     ];
     coc = {
       enable = true;
     };
+    extraConfig = ''
+      let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+      set termguicolors
+      let base16colorspace=256  " Access colors present in 256 colorspace
+      colorscheme base16-dracula
+    '';
   };
   programs.helix = {
     enable = true;
