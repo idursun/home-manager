@@ -102,9 +102,7 @@
     plugins = with pkgs; [
       { plugin = tmuxPlugins.dracula; 
         extraConfig = ''
-          set -g @dracula-show-battery false
-          set -g @dracula-show-timezone false
-          set -g @dracula-show-location false
+          set -g @dracula-plugins "none"
         '';
       }
     ];
