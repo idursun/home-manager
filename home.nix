@@ -96,8 +96,11 @@ in
       export COLORTERM=truecolor
     '';
   };
+
   programs.fzf.enable = true;
+
   programs.starship.enable = true;
+
   programs.tmux = {
     enable = true;
     keyMode = "vi";
@@ -111,6 +114,7 @@ in
       }
     ];
   };
+
   programs.neovim = {
     enable = true;
     defaultEditor = true;
@@ -125,14 +129,43 @@ in
     ];
     coc = {
       enable = true;
+      pluginConfig = ''
+        " Use tab for trigger completion with characters ahead and navigate.
+        " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+        inoremap <silent><expr> <TAB>
+              \ pumvisible() ? "\<C-n>" :
+              \ <SID>check_back_space() ? "\<TAB>" :
+              \ coc#refresh()
+        inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+        function! s:check_back_space() abort
+          let col = col('.') - 1
+          return !col || getline('.')[col - 1]  =~# '\s'
+        endfunction
+      '';
     };
     extraConfig = ''
+      set ignorecase
+      set tabstop=4
+      set expandtab
+      set hls
+      set ruler
+      set incsearch
+      set relativenumber
+      set smartcase
+      set autoindent
+      set hidden
+      set nobackup
+      set nowritebackup
+      set signcolumn=yes
+      set cmdheight=2
       let $NVIM_TUI_ENABLE_TRUE_COLOR=1
       set termguicolors
       let base16colorspace=256  " Access colors present in 256 colorspace
       colorscheme base16-dracula
     '';
   };
+
   programs.helix = {
     enable = true;
     settings = {
