@@ -102,6 +102,7 @@ in
     enable = true;
     keyMode = "vi";
     shortcut = "b";
+    terminal = "screen-256color";
     plugins = with pkgs; [
       { plugin = tmuxPlugins.dracula; 
         extraConfig = ''
