@@ -1,10 +1,13 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
+let
+  user = import ./env.nix;
+in
 {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
-  home.username = "ibrahim";
-  home.homeDirectory = "/home/ibrahim";
+  home.username = user.username;
+  home.homeDirectory = user.homeDirectory;
 
   home.packages = [
     pkgs.htop
@@ -41,9 +44,9 @@
       pull.ff = "only";
       init.defaultBranch = "main";
       user = {
-          email = "ibrahim@dursun.cc";
-          name = "Ibrahim Dursun";
-          signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBc0shyBJNxba3uD0zZHG0aLIUR0CIx/Tef5dmHcefsE stack-mac";
+          name = user.git.personal.name;
+          email = user.git.personal.email;
+          signingkey = user.git.personal.signingkey;
       };
     };
 
@@ -60,21 +63,21 @@
       { 
         condition = "gitdir:~/repositories/";
         contents = {
-              user = {
-                  email = "ibrahim@dursun.cc";
-                  name = "Ibrahim Dursun";
-                  signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBc0shyBJNxba3uD0zZHG0aLIUR0CIx/Tef5dmHcefsE stack-mac";
-              };
+          user = {
+            name = user.git.personal.name;
+            email = user.git.personal.email;
+            signingkey = user.git.personal.signingkey;
+          };
         };
       }
       { 
         condition = "gitdir:~/workspace/";
         contents = {
-              user = {
-                  email = "idursun@stackoverflow.com";
-                  name = "Ibrahim Dursun";
-                  signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBc0shyBJNxba3uD0zZHG0aLIUR0CIx/Tef5dmHcefsE stack-mac";
-              };
+          user = {
+            name = user.git.work.name;
+            email = user.git.work.email;
+            signingkey = user.git.work.signingkey;
+          };
         };
       }
     ];
