@@ -14,6 +14,8 @@ in
     pkgs.ripgrep
     pkgs.bat
     pkgs.exa
+    pkgs.rust-analyzer
+    pkgs.elixir_ls
   ];
 
   # This value determines the Home Manager release that your
@@ -174,6 +176,10 @@ in
     languages = [
       {
         name = "elixir";
+        auto-format = true;
+      }
+      {
+        name = "rust";
         auto-format = true;
       }
     ];
