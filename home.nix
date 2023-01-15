@@ -93,7 +93,7 @@ in
     defaultKeymap = "emacs";
     enableCompletion = true;
     enableAutosuggestions = true;
-    enableSyntaxHighlighting = false;
+    enableSyntaxHighlighting = true;
     initExtra = ''
       export COLORTERM=truecolor
     '';
