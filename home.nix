@@ -4,6 +4,7 @@ let
   user = import ./env.nix;
 in
 {
+  manual.manpages.enable = false;
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = user.username;
@@ -16,6 +17,8 @@ in
     pkgs.exa
     pkgs.rust-analyzer
     pkgs.elixir_ls
+    pkgs.kubectl
+    pkgs.kubectx
   ];
 
   # This value determines the Home Manager release that your
@@ -96,6 +99,7 @@ in
     enableSyntaxHighlighting = true;
     initExtra = ''
       export COLORTERM=truecolor
+      source <(kubectl completion zsh)
     '';
   };
 
@@ -165,6 +169,7 @@ in
       set termguicolors
       let base16colorspace=256  " Access colors present in 256 colorspace
       colorscheme base16-dracula
+      tnoremap <C-j> <C-\><C-N>
     '';
   };
 
