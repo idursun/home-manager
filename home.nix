@@ -110,6 +110,7 @@ in
   programs.tmux = {
     enable = true;
     keyMode = "vi";
+    mouse = true;
     shortcut = "b";
     terminal = "screen-256color";
     plugins = with pkgs; [
