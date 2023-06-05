@@ -55,6 +55,10 @@ in
       };
     };
 
+    aliases = {
+      gg = "log --graph --abbrev-commit --decorate --date=relative --oneline --all";
+    };
+
     extraConfig = {
       remote."origin".prune = true;
       credential.helper = "/usr/local/share/gcm-core/git-credential-manager";
@@ -62,6 +66,8 @@ in
         "https://dev.azure.com" = { useHttpPath = true; };
         "https://gh.stackoverflow.com" = { gitHubAuthModes = "oauth"; provider = "github"; };
       };
+      merge.tool = "code";
+      mergetool."code".cmd = "code --wait --merge $REMOTE $LOCAL $BASE $MERGED";
     };
 
     includes = [
