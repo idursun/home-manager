@@ -185,15 +185,17 @@ in
     settings = {
       theme = "dracula";
     };
-    languages = [
-      {
-        name = "elixir";
-        auto-format = true;
-      }
-      {
-        name = "rust";
-        auto-format = true;
-      }
-    ];
+    languages = {
+      language =  [
+        {
+          name = "elixir";
+          auto-format = true;
+        }
+        {
+          name = "rust";
+          auto-format = true;
+        }
+      ];
+    };
   };
 }
