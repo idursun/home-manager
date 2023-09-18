@@ -102,7 +102,9 @@ in
     defaultKeymap = "emacs";
     enableCompletion = true;
     enableAutosuggestions = true;
-    enableSyntaxHighlighting = true;
+    syntaxHighlighting = {
+      enable = true;
+    };
     initExtra = ''
       export COLORTERM=truecolor
       source <(kubectl completion zsh)
