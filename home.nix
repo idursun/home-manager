@@ -55,6 +55,8 @@ in
       };
     };
 
+    lfs.enable = true;
+
     aliases = {
       gg = "log --graph --abbrev-commit --decorate --date=relative --oneline --all";
     };
