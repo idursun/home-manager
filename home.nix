@@ -70,6 +70,7 @@ in
       };
       merge.tool = "code";
       mergetool."code".cmd = "code --wait --merge $REMOTE $LOCAL $BASE $MERGED";
+      rebase.autosquash = true;
     };
 
     includes = [
