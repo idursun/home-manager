@@ -37,7 +37,8 @@ in
     enable = true;
     userName = "Ibrahim Dursun";
     userEmail = "ibrahim@dursun.cc";
-    delta.enable = true;
+    #delta.enable = true;
+    difftastic.enable = true;
     iniContent = {
       commit.gpgSign = true;
       gpg = {
