@@ -14,9 +14,8 @@ in
     pkgs.htop
     pkgs.ripgrep
     pkgs.bat
-    pkgs.exa
+    pkgs.eza
     pkgs.rust-analyzer
-    pkgs.elixir_ls
     pkgs.kubectl
     pkgs.kubectx
   ];
@@ -111,6 +110,14 @@ in
       export COLORTERM=truecolor
       source <(kubectl completion zsh)
     '';
+  };
+
+  programs.zellij = {
+    enable = true;
+    enableZshIntegration = false;
+    settings = {
+      theme = "dracula";
+    };
   };
 
   programs.fzf.enable = true;
