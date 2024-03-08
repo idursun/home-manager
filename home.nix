@@ -109,6 +109,7 @@ in
     initExtra = ''
       export COLORTERM=truecolor
       source <(kubectl completion zsh)
+      source $HOME/.dev-local-setup
     '';
   };
 
