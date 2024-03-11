@@ -1,4 +1,4 @@
-{ 
+{
   username = "idursun";
   homeDirectory = "/Users/idursun/";
   git = {

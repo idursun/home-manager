@@ -4,6 +4,13 @@ let
   user = import ./env.nix;
 in
 {
+  imports = [
+    ./starship.nix
+    ./git.nix
+    ./neovim.nix
+    ./zsh.nix
+    ./tmux.nix
+  ];
   manual.manpages.enable = false;
   home.enableNixpkgsReleaseCheck = false;
   # Home Manager needs a bit of information about you and the
@@ -33,88 +40,6 @@ in
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  programs.git = {
-    enable = true;
-    userName = "Ibrahim Dursun";
-    userEmail = "ibrahim@dursun.cc";
-    #delta.enable = true;
-    difftastic.enable = true;
-    iniContent = {
-      commit.gpgSign = true;
-      gpg = {
-        format = "ssh";
-        ssh.allowedSignersFile = "~/.ssh/allowed_signers";
-      };
-      pull.rebase = true;
-      pull.ff = "only";
-      init.defaultBranch = "main";
-      user = {
-          name = user.git.personal.name;
-          email = user.git.personal.email;
-          signingkey = user.git.personal.signingkey;
-      };
-    };
-
-    lfs.enable = true;
-
-    aliases = {
-      gg = "log --graph --abbrev-commit --decorate --date=relative --oneline --all";
-    };
-
-    extraConfig = {
-      remote."origin".prune = true;
-      credential.helper = "/usr/local/share/gcm-core/git-credential-manager";
-      credential = {
-        "https://dev.azure.com" = { useHttpPath = true; };
-        "https://gh.stackoverflow.com" = { gitHubAuthModes = "oauth"; provider = "github"; };
-      };
-      merge.tool = "code";
-      mergetool."code".cmd = "code --wait --merge $REMOTE $LOCAL $BASE $MERGED";
-      rebase.autosquash = true;
-    };
-
-    includes = [
-      { 
-        condition = "gitdir:~/repositories/";
-        contents = {
-          user = {
-            name = user.git.personal.name;
-            email = user.git.personal.email;
-            signingkey = user.git.personal.signingkey;
-          };
-        };
-      }
-      { 
-        condition = "gitdir:~/workspace/";
-        contents = {
-          user = {
-            name = user.git.work.name;
-            email = user.git.work.email;
-            signingkey = user.git.work.signingkey;
-          };
-        };
-      }
-    ];
-  };
-
-  programs.zsh = {
-    enable = true;
-    history = {
-      ignoreDups = true;
-    };
-    defaultKeymap = "emacs";
-    enableCompletion = true;
-    enableAutosuggestions = true;
-    syntaxHighlighting = {
-      enable = true;
-    };
-    initExtra = ''
-      export COLORTERM=truecolor
-      source <(kubectl completion zsh)
-      source $HOME/.dev-local-setup
-    '';
-  };
-
   programs.zellij = {
     enable = true;
     enableZshIntegration = false;
@@ -124,73 +49,6 @@ in
   };
 
   programs.fzf.enable = true;
-
-  programs.starship = {
-    enable = true;
-    settings = {
-      add_newline = true;
-      format = lib.concatStrings [
-        "$all"
-        "$kubernetes"
-        "$line_break"
-        "$shell"
-        "$character"
-      ];
-      kubernetes = {
-        disabled = false;
-      };
-    };
-  };
-
-  programs.tmux = {
-    enable = true;
-    keyMode = "vi";
-    mouse = true;
-    shortcut = "b";
-    terminal = "screen-256color";
-    plugins = with pkgs; [
-      { plugin = tmuxPlugins.dracula; 
-        extraConfig = ''
-          set -g @dracula-plugins "none"
-        '';
-      }
-    ];
-  };
-
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    plugins = with pkgs.vimPlugins; [
-      vim-sensible
-      vim-surround
-      vim-nix
-      vim-rooter
-      base16-vim
-      vim-multiple-cursors
-      vim-highlightedyank
-    ];
-    extraConfig = ''
-      set ignorecase
-      set tabstop=4
-      set expandtab
-      set hls
-      set ruler
-      set incsearch
-      set relativenumber
-      set smartcase
-      set autoindent
-      set hidden
-      set nobackup
-      set nowritebackup
-      set signcolumn=yes
-      set cmdheight=2
-      let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-      set termguicolors
-      let base16colorspace=256  " Access colors present in 256 colorspace
-      colorscheme base16-dracula
-      tnoremap <C-j> <C-\><C-N>
-    '';
-  };
 
   programs.helix = {
     enable = true;
