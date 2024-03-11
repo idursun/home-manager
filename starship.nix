@@ -13,6 +13,10 @@
       ];
       kubernetes = {
         disabled = false;
+        contexts = [
+          { context_pattern = "kind.*"; style = "green"; }
+          { context_pattern = ".*-aks"; style = "red"; }
+        ];
       };
     };
   };
