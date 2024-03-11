@@ -5,6 +5,7 @@ let
 in
 {
   manual.manpages.enable = false;
+  home.enableNixpkgsReleaseCheck = false;
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = user.username;
@@ -15,7 +16,6 @@ in
     pkgs.ripgrep
     pkgs.bat
     pkgs.eza
-    pkgs.rust-analyzer
     pkgs.kubectl
     pkgs.kubectx
   ];
@@ -125,7 +125,22 @@ in
 
   programs.fzf.enable = true;
 
-  programs.starship.enable = true;
+  programs.starship = {
+    enable = true;
+    settings = {
+      add_newline = true;
+      format = lib.concatStrings [
+        "$all"
+        "$kubernetes"
+        "$line_break"
+        "$shell"
+        "$character"
+      ];
+      kubernetes = {
+        disabled = false;
+      };
+    };
+  };
 
   programs.tmux = {
     enable = true;
