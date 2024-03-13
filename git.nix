@@ -4,8 +4,8 @@ in
 {
   programs.git = {
     enable = true;
-    userName = "Ibrahim Dursun";
-    userEmail = "ibrahim@dursun.cc";
+    userName = user.git.personal.name;
+    userEmail = user.git.personal.email;
     #delta.enable = true;
     difftastic.enable = true;
     iniContent = {
