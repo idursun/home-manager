@@ -25,6 +25,7 @@ in
     pkgs.eza
     pkgs.kubectl
     pkgs.kubectx
+    pkgs.starship
   ];
 
   # This value determines the Home Manager release that your
