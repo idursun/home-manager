@@ -26,10 +26,9 @@
         config = ''
           local builtin = require('telescope.builtin')
 
-          vim.keymap.set('n', '<c-p>', builtin.find_files, {})
-          vim.keymap.set('n', '<Space><Space>', builtin.oldfiles, {})
-          vim.keymap.set('n', '<Space>fg', builtin.live_grep, {})
-          vim.keymap.set('n', '<Space>fh', builtin.help_tags, {})
+          vim.keymap.set('n', '<leader>f', builtin.find_files, {})
+          vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+          vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
         '';
       }
       {
@@ -75,7 +74,7 @@
         type = "lua";
         config = ''
           require('mason-lspconfig').setup({
-            ensure_installed = { "lua_ls", "tsserver", "elixirls", "rust_analyzer",  }
+            ensure_installed = { "lua_ls", "tsserver", "elixirls", "rust_analyzer", "zls" }
           })
         '';
       }
@@ -86,6 +85,7 @@
         local lspconfig = require('lspconfig')
         lspconfig.elixirls.setup({})
         lspconfig.rust_analyzer.setup({})
+        lspconfig.zls.setup({})
         vim.api.nvim_create_autocmd('LspAttach', {
           group = vim.api.nvim_create_augroup('UserLspConfig', {}),
           callback = function(ev) 
@@ -96,9 +96,9 @@
             vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
             vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
             vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-            vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
-            vim.keymap.set({'v', 'n'}, '<space>ca', vim.lsp.buf.code_action, opts)
-            vim.keymap.set('n', '<space>f', function()
+            vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
+            vim.keymap.set({'v', 'n'}, '<leader>ca', vim.lsp.buf.code_action, opts)
+            vim.keymap.set('n', '<leader>L', function()
               vim.lsp.buf.format { async = true }
             end, opts)
           end,
@@ -146,6 +146,17 @@
         })
         '';
       }
+      {
+        plugin = vim-test;
+        type = "lua";
+        config = ''
+          vim.cmd [[ 
+            let test#strategy = "neovim"
+          ]]
+          vim.keymap.set('n', '<leader>t', ':TestNearest<CR>')
+          vim.keymap.set('n', '<leader>T', ':TestFile<CR>')
+        '';
+      }
     ];
     extraConfig = ''
       lua << EOF
@@ -155,6 +166,7 @@
       vim.opt.expandtab = true
       vim.o.termguicolors = true
       vim.cmd [[ colorscheme dracula ]]
+      vim.keymap.set('t', "<C-j>", "<C-\\><C-N>", { silent = true })
       EOF
     '';
   };
