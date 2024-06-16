@@ -6,8 +6,8 @@ in
     enable = true;
     userName = user.git.personal.name;
     userEmail = user.git.personal.email;
-    #delta.enable = true;
-    difftastic.enable = true;
+    delta.enable = true;
+    #difftastic.enable = true;
     iniContent = {
       commit.gpgSign = true;
       gpg = {
