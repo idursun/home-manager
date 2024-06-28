@@ -1,7 +1,19 @@
 local lspconfig = require('lspconfig')
+
+lspconfig.lua_ls.setup({})
+lspconfig.tsserver.setup({})
 lspconfig.elixirls.setup({})
 lspconfig.rust_analyzer.setup({})
 lspconfig.zls.setup({})
+lspconfig.yamlls.setup({})
+lspconfig.tailwindcss.setup({
+  init_options = {
+    elixir = "html-eex",
+    eelixir = "html-eex",
+    heex = "html-eex",
+  },
+})
+
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(ev) 

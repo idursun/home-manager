@@ -68,7 +68,7 @@
         type = "lua";
         config = ''
           require('mason-lspconfig').setup({
-            ensure_installed = { "lua_ls", "tsserver", "elixirls", "rust_analyzer", "zls", "yamlls" }
+            ensure_installed = { "lua_ls", "tsserver", "elixirls", "rust_analyzer", "zls", "yamlls", "tailwindcss" }
           })
         '';
       }
