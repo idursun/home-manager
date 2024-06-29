@@ -11,6 +11,7 @@ vim.opt.incsearch = true
 vim.opt.ttimeout = true
 vim.opt.ttimeoutlen = 100
 vim.opt.smarttab = true
+vim.wo.relativenumber = true
 
 vim.cmd [[ colorscheme dracula ]]
 vim.keymap.set('t', "<C-j>", "<C-\\><C-N>", { silent = true })
