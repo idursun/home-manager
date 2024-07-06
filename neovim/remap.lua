@@ -14,4 +14,7 @@ vim.opt.smarttab = true
 vim.wo.relativenumber = true
 
 vim.cmd [[ colorscheme dracula ]]
+vim.keymap.set('n', "<C-f>", "<C-f>zz", { silent = true })
+vim.keymap.set('n', "<C-u>", "<C-u>zz", { silent = true })
+vim.keymap.set('t', "<C-j>", "<C-\\><C-N>", { silent = true })
 vim.keymap.set('t', "<C-j>", "<C-\\><C-N>", { silent = true })
