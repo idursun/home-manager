@@ -6,6 +6,7 @@ lspconfig.elixirls.setup({})
 lspconfig.rust_analyzer.setup({})
 lspconfig.zls.setup({})
 lspconfig.yamlls.setup({})
+lspconfig.gopls.setup({})
 lspconfig.tailwindcss.setup({
   init_options = {
     elixir = "html-eex",
