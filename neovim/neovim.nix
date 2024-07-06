@@ -37,7 +37,16 @@
           vim.g.loaded_netrw = 1
           vim.g.loaded_netrwPlugin = 1
 
-          require("nvim-tree").setup()
+          require("nvim-tree").setup({
+            git = {
+              enable = false,
+            },
+            filesystem_watchers = {
+              ignore_dirs = {
+                "node_modules",
+              },
+            },
+          })
 
           vim.keymap.set('n', '<c-n>', ':NvimTreeFindFileToggle<CR>')
         '';
