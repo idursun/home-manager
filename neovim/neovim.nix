@@ -6,7 +6,6 @@
     plugins = with pkgs.vimPlugins; [
       vim-surround
       dracula-vim
-      nvim-web-devicons
       { plugin = nvim-treesitter.withAllGrammars;
         type = "lua";
         config = ''
