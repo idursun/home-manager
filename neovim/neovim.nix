@@ -73,13 +73,18 @@
           })
         '';
       }
-      luasnip
       cmp_luasnip
       cmp-nvim-lsp
       friendly-snippets
       { plugin = nvim-cmp;
         type = "lua";
         config = builtins.readFile(./cmp.lua);
+      }
+      { plugin = luasnip;
+        type = "lua";
+        config = ''
+          require('luasnip.loaders.from_vscode').lazy_load()
+        '';
       }
       { plugin = vim-test;
         type = "lua";
