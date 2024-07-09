@@ -11,7 +11,6 @@ vim.opt.incsearch = true
 vim.opt.ttimeout = true
 vim.opt.ttimeoutlen = 100
 vim.opt.smarttab = true
-vim.opt.autochdir = true
 vim.wo.relativenumber = true
 
 -- Netrw configuration
