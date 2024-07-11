@@ -6,7 +6,7 @@
     };
     defaultKeymap = "emacs";
     enableCompletion = true;
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
     syntaxHighlighting.enable = true; 
     initExtra = ''
       autoload edit-command-line; zle -N edit-command-line
