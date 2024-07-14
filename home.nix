@@ -25,7 +25,6 @@ in
     pkgs.eza
     pkgs.kubectl
     pkgs.kubectx
-    pkgs.starship
   ];
 
   home.file.".ideavimrc".source = ./ideavimrc;
@@ -42,14 +41,6 @@ in
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-
-  programs.zellij = {
-    enable = true;
-    enableZshIntegration = false;
-    settings = {
-      theme = "dracula";
-    };
-  };
 
   programs.fzf.enable = true;
 
