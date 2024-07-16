@@ -30,6 +30,15 @@
           vim.keymap.set('n', '<leader>s', builtin.lsp_document_symbols, {})
         '';
       }
+      { plugin = nvim-tree-lua;
+        type = "lua";
+        config = ''
+          vim.g.loaded_netrw = 1
+          vim.g.loaded_netrwPlugin = 1
+          require("nvim-tree").setup()
+          vim.keymap.set('n', '<c-n>', ':NvimTreeFindFileToggle<CR>')
+       '';
+      }
       { plugin = lualine-nvim;
         type = "lua";
         config = ''
@@ -95,7 +104,6 @@
           vim.keymap.set('n', '<leader>t', ':TestNearest<CR>')
           vim.keymap.set('n', '<leader>T', ':TestFile<CR>')
           vim.keymap.set('n', '<leader>b', ':b#<CR>')
-          vim.keymap.set('n', '<C-n>', ':Lexplore<CR>')
         '';
       }
     ];

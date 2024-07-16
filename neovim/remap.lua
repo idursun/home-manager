@@ -17,7 +17,7 @@ vim.opt.ttimeoutlen = 100
 vim.opt.smarttab = true
 
 -- Netrw configuration
-vim.g.netrw_liststyle = 3
+-- vim.g.netrw_liststyle = 3
 vim.g.netrw_banner = false
 vim.g.netrw_winsize = 25
 
