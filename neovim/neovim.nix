@@ -6,7 +6,7 @@
     plugins = with pkgs.vimPlugins; [
       vim-surround
       dracula-vim
-      { plugin = nvim-treesitter.withPlugins (p: [p.elixir p.zig]);
+      { plugin = nvim-treesitter.withPlugins (p: [p.elixir p.zig p.query]);
         type = "lua";
         config = ''
           require('nvim-treesitter.configs').setup({
@@ -104,14 +104,17 @@
           require('luasnip.loaders.from_vscode').lazy_load()
         '';
       }
-      { plugin = vim-test;
+      neotest-elixir
+      { plugin = neotest;
         type = "lua";
         config = ''
-          vim.cmd [[ 
-            let test#strategy = "neovim"
-          ]]
-          vim.keymap.set('n', '<leader>t', ':TestNearest<CR>')
-          vim.keymap.set('n', '<leader>T', ':TestFile<CR>')
+          require("neotest").setup({
+            adapters = {
+              require("neotest-elixir"),
+            },
+          })
+          local nt = require("neotest")
+          vim.keymap.set('n', '<leader>t', nt.run.run, {})
         '';
       }
     ];
