@@ -6,7 +6,7 @@
     plugins = with pkgs.vimPlugins; [
       vim-surround
       dracula-vim
-      { plugin = nvim-treesitter.withAllGrammars;
+      { plugin = nvim-treesitter.withPlugins (p: [p.elixir p.zig]);
         type = "lua";
         config = ''
           require('nvim-treesitter.configs').setup({
