@@ -2,7 +2,7 @@ local lspconfig = require('lspconfig')
 
 lspconfig.lua_ls.setup({})
 lspconfig.tsserver.setup({})
-lspconfig.elixirls.setup({})
+--lspconfig.elixirls.setup({})
 lspconfig.rust_analyzer.setup({})
 lspconfig.zls.setup({})
 lspconfig.yamlls.setup({})
@@ -15,6 +15,29 @@ lspconfig.tailwindcss.setup({
   },
 })
 lspconfig.emmet_language_server.setup({})
+
+local configs = require("lspconfig.configs")
+
+local lexical_config = {
+  filetypes = { "elixir", "eelixir", "heex" },
+  cmd = { "/Users/idursun/repositories/elixir/lexical/_build/dev/package/lexical" },
+  settings = {},
+}
+
+if not configs.lexical then
+  configs.lexical = {
+    default_config = {
+      filetypes = lexical_config.filetypes,
+      cmd = lexical_config.cmd,
+      root_dir = function(fname)
+        return lspconfig.util.root_pattern("mix.exs", ".git")(fname) or vim.loop.os_homedir()
+      end,
+      -- optional settings
+      settings = lexical_config.settings,
+    },
+  }
+end
+lspconfig.lexical.setup({})
 
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
