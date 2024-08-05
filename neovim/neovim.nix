@@ -6,7 +6,7 @@
     plugins = with pkgs.vimPlugins; [
       vim-surround
       dracula-vim
-      { plugin = nvim-treesitter.withPlugins (p: [p.elixir p.zig p.query]);
+      { plugin = nvim-treesitter.withPlugins (p: [p.elixir p.eex p.heex p.html p.zig p.query]);
         type = "lua";
         config = ''
           require('nvim-treesitter.configs').setup({
@@ -77,7 +77,7 @@
         type = "lua";
         config = ''
           require('mason-lspconfig').setup({
-            ensure_installed = { "lua_ls", "tsserver", "lexical", "rust_analyzer", "zls", "yamlls", "tailwindcss", "gopls", "emmet_language_server" }
+            ensure_installed = { "lua_ls", "tsserver", "lexical", "rust_analyzer", "zls", "yamlls", "tailwindcss", "gopls"}
           })
         '';
       }

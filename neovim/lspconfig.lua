@@ -14,7 +14,6 @@ lspconfig.tailwindcss.setup({
     heex = "html-eex",
   },
 })
-lspconfig.emmet_language_server.setup({})
 
 local configs = require("lspconfig.configs")
 
