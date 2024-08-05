@@ -95,6 +95,7 @@
       }
       cmp_luasnip
       cmp-nvim-lsp
+      cmp-buffer
       friendly-snippets
       { plugin = nvim-cmp;
         type = "lua";
