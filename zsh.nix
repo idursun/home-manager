@@ -18,6 +18,7 @@
 
       export COLORTERM=truecolor
       source <(kubectl completion zsh)
+      source <(jj util completion zsh)
       source $HOME/.dev-local-setup
     '';
   };
