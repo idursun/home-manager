@@ -10,6 +10,7 @@
       { plugin = tmuxPlugins.dracula;
         extraConfig = ''
           set -g @dracula-plugins "none"
+          set -s escape-time 0
         '';
       }
     ];
