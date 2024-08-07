@@ -22,7 +22,6 @@
       { plugin = telescope-nvim;
         type = "lua";
         config = ''
-
           require('telescope').setup({
             defaults = {
               file_ignore_patterns = {
@@ -46,7 +45,11 @@
         config = ''
           vim.g.loaded_netrw = 1
           vim.g.loaded_netrwPlugin = 1
-          require("nvim-tree").setup()
+          require("nvim-tree").setup({
+            live_filter = {
+              always_show_folders = false,
+            },
+          })
           vim.keymap.set('n', '<c-n>', ':NvimTreeFindFileToggle<CR>')
        '';
       }
