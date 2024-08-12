@@ -1,4 +1,5 @@
 local lspconfig = require('lspconfig')
+local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 lspconfig.lua_ls.setup({})
 lspconfig.tsserver.setup({})
@@ -16,6 +17,11 @@ lspconfig.tailwindcss.setup({
     }
   },
   root_dir = lspconfig.util.root_pattern("assets", "tailwind.config.js", ".git"),
+})
+
+lspconfig.emmet_ls.setup({
+  capabilities = capabilities,
+  filetypes = { "html", "heex", "eex" }
 })
 
 local configs = require("lspconfig.configs")

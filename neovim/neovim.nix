@@ -5,6 +5,7 @@
     defaultEditor = true;
     plugins = with pkgs.vimPlugins; [
       vim-surround
+      nvim-ts-autotag
       dracula-vim
       { plugin = nvim-treesitter.withPlugins (p: [p.c p.vim p.lua p.vimdoc p.elixir p.eex p.heex p.html p.zig p.query p.markdown p.markdown_inline]);
         type = "lua";
@@ -80,7 +81,7 @@
         type = "lua";
         config = ''
           require('mason-lspconfig').setup({
-            ensure_installed = { "lua_ls", "tsserver", "lexical", "rust_analyzer", "zls", "yamlls", "tailwindcss", "gopls"}
+            ensure_installed = { "lua_ls", "tsserver", "lexical", "rust_analyzer", "zls", "yamlls", "tailwindcss", "gopls", "emmet_ls"}
           })
         '';
       }
