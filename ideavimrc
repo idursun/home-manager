@@ -119,11 +119,6 @@ map <leader>ws <Action>(SplitHorizontally)
 map <leader>wu <Action>(Unsplit)
 map <leader>wm <Action>(MoveEditorToOppositeTabGroup)
 
-" Display options
-map <leader>dd <action>(ToggleDistractionFreeMode)
-map <leader>dz <action>(ToggleZenMode)
-map <leader>df <action>(ToggleFullScreen)
-
 " Actions
 map <leader>am <action>(ShowIntentionActions)
 map <leader>as <action>(SearchEverywhere)
@@ -131,7 +126,7 @@ map <leader>as <action>(SearchEverywhere)
 " File navigation
 map <leader>ff <action>(GotoFile)
 map <leader>fr <action>(RecentFiles)
-map <leader>fc <action>(FindInPath)
+map <leader>fg <action>(FindInPath)
 map <leader><leader> <Action>(RecentFiles)
 map <leader>fl <action>(RecentLocations)
 map <leader>fs <action>(NewScratchFile)
@@ -153,8 +148,7 @@ nmap <leader>gy <Action>(GotoTypeDeclaration)
 nmap <leader>gi <Action>(GotoImplementation)
 nmap <leader>gu <Action>(ShowUsages)
 nmap <leader>gt <Action>(GotoTest)
-nmap <leader>gf <Action>(Back)
-nmap <leader>gb <Action>(Forward)
+nmap <leader>gf <Action>(Forward)
 
 " Git windows
 map <leader>gc <Action>(CheckinProject)
@@ -162,7 +156,9 @@ map <leader>gs <Action>(ActivateVersionControlToolWindow)
 map <leader>gb <Action>(Git.Branches)
 
 " Errors
-map <leader>en <Action>(ReSharperGotoNextErrorInSolution)
-map <leader>ep <Action>(ReSharperGotoPrevErrorInSolution)
+map <leader>dn <Action>(ReSharperGotoNextErrorInSolution)
+map <leader>dp <Action>(ReSharperGotoPrevErrorInSolution)
 
 nmap <leader>L <Action>(ReformatCode)
+nmap <leader>s <Action>(FileStructurePopup)
+nmap <leader>b b#<CR>
