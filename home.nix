@@ -25,6 +25,7 @@ in
     pkgs.eza
     pkgs.kubectl
     pkgs.kubectx
+    pkgs.fd
   ];
 
   home.file.".ideavimrc".source = ./ideavimrc;
