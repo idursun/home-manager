@@ -1,4 +1,8 @@
 { pkgs, ... }:
+let 
+  user = import ../env.nix;
+  parserInstallDirectory = "${user.homeDirectory}/.config/nvim/parsers";
+in
 {
   programs.neovim = {
     enable = true;
@@ -10,7 +14,9 @@
       { plugin = nvim-treesitter.withPlugins (p: [p.c p.vim p.lua p.vimdoc p.elixir p.eex p.heex p.html p.zig p.query p.markdown p.markdown_inline]);
         type = "lua";
         config = ''
+          vim.opt.runtimepath:prepend("${parserInstallDirectory}")
           require('nvim-treesitter.configs').setup({
+            parser_install_dir = "${parserInstallDirectory}",
             highlight = {
               enable = true,
             },
