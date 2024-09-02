@@ -1,6 +1,10 @@
+let
+  user = builtins.getEnv "USER";
+  home = builtins.getEnv "HOME";
+in 
 {
-  username = "idursun";
-  homeDirectory = "/Users/idursun/";
+  username = user;
+  homeDirectory = home;
   git = {
     personal = {
       name = "Ibrahim Dursun";
