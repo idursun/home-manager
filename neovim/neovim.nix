@@ -47,6 +47,7 @@ in
           vim.keymap.set('n', '<leader>fr', builtin.buffers, {})
         '';
       }
+      nvim-web-devicons
       { plugin = nvim-tree-lua;
         type = "lua";
         config = ''
