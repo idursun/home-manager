@@ -1,8 +1,33 @@
 local lspconfig = require('lspconfig')
 local capabilities = vim.lsp.protocol.make_client_capabilities()
+lspconfig.inlay_hints = {
+  enable = true
+}
 
-lspconfig.lua_ls.setup({})
-lspconfig.tsserver.setup({})
+lspconfig.lua_ls.setup({
+  settings = {
+    Lua = {
+      hint = { enable = true, },
+    }
+  }
+
+})
+lspconfig.tsserver.setup({
+  capabilities = capabilities,
+  settings = {
+    typescript = {
+      inlayHints = {
+        includeInlayEnumMemberValueHints = true,
+        includeInlayFunctionLikeReturnTypeHints = true,
+        includeInlayFunctionParameterTypeHints = true,
+        includeInlayParameterNameHints = "all",
+        includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+        includeInlayPropertyDeclarationTypeHints = true,
+        includeInlayVariableTypeHints = false,
+      }
+    }
+  }
+})
 --lspconfig.elixirls.setup({})
 lspconfig.rust_analyzer.setup({})
 lspconfig.zls.setup({})
@@ -68,5 +93,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', '<leader>dd', '<cmd>Telescope diagnostics<CR>', { noremap = true, silent = true })
     vim.keymap.set('n', '<leader>dp', vim.diagnostic.goto_prev, { noremap = true, silent = true })
     vim.keymap.set('n', '<leader>dn', vim.diagnostic.goto_next, { noremap = true, silent = true })
+    vim.keymap.set("n", '<leader>i', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ 0 }), { 0 }) end,
+      {})
   end,
 })
