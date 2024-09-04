@@ -11,7 +11,7 @@ in
       vim-surround
       nvim-ts-autotag
       dracula-vim
-      { plugin = nvim-treesitter.withPlugins (p: [p.c p.vim p.lua p.vimdoc p.elixir p.eex p.heex p.html p.zig p.query p.markdown p.markdown_inline]);
+      { plugin = nvim-treesitter.withPlugins (p: [p.c p.vim p.lua p.vimdoc p.elixir p.eex p.heex p.html p.zig p.query p.markdown p.markdown_inline p.nix]);
         type = "lua";
         config = ''
           vim.opt.runtimepath:prepend("${parserInstallDirectory}")
