@@ -161,4 +161,5 @@ map <leader>dp <Action>(ReSharperGotoPrevErrorInSolution)
 
 nmap <leader>L <Action>(ReformatCode)
 nmap <leader>s <Action>(FileStructurePopup)
-nmap <leader>b b#<CR>
+nmap <leader>b :b#<cr>
+nmap <leader>t <Action>(RunClass)
