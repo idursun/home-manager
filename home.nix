@@ -7,7 +7,7 @@ in
   imports = [
     ./starship.nix
     ./git.nix
-    ./neovim/neovim.nix
+    ./neovim.nix
     ./zsh.nix
     ./tmux.nix
   ];
