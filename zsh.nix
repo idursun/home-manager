@@ -17,6 +17,7 @@
       bindkey  "^X^E"   edit-command-line
 
       export COLORTERM=truecolor
+      export PATH=$PATH:/Users/idursun/.cargo/bin
       source <(kubectl completion zsh)
       source <(jj util completion zsh)
       source $HOME/.dev-local-setup
