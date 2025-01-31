@@ -105,16 +105,6 @@ map <leader>c <action>(CommentByLineComment)
 " Jump around with easymotion
 map <leader>j <Plug>(easymotion-s)
 
-" Window splits
-map <leader>wv <Action>(SplitVertically)
-map <leader>ws <Action>(SplitHorizontally)
-map <leader>wu <Action>(Unsplit)
-map <leader>wm <Action>(MoveEditorToOppositeTabGroup)
-
-" Actions
-map <leader>am <action>(ShowIntentionActions)
-map <leader>as <action>(SearchEverywhere)
-
 " File navigation
 map <leader>ff <action>(GotoFile)
 map <leader>fr <action>(RecentFiles)
@@ -122,9 +112,6 @@ map <leader>fg <action>(FindInPath)
 map <leader><leader> <Action>(RecentFiles)
 map <leader>fl <action>(RecentLocations)
 map <leader>fs <action>(NewScratchFile)
-
-" Close active tab
-map <leader>q <action>(CloseContent)
 
 " Refactoring
 map <leader>rn <Action>(RenameElement)
@@ -155,3 +142,10 @@ nmap <leader>L <Action>(ReformatCode)
 nmap <leader>s <Action>(FileStructurePopup)
 nmap <leader>b :b#<cr>
 nmap <leader>t <Action>(RunClass)
+
+if has('ide')
+  if &ide =~? 'goland'
+    nmap <leader>dn <Action>(GotoNextError)
+    nmap <leader>dp <Action>(GotoPreviousError)
+  endif
+endif
