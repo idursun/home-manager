@@ -10,6 +10,7 @@ in
     ./neovim.nix
     ./zsh.nix
     ./tmux.nix
+    ./autojump.nix
   ];
   manual.manpages.enable = false;
   home.enableNixpkgsReleaseCheck = false;
