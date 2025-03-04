@@ -11,8 +11,11 @@
         "$shell"
         "$character"
       ];
+      elixir = {
+        disabled = true;
+      };
       kubernetes = {
-        disabled = false;
+        disabled = true;
         contexts = [
           { context_pattern = "kind.*"; style = "green"; }
           { context_pattern = ".*-aks"; style = "red"; }
