@@ -7,7 +7,6 @@ in
   imports = [
     ./starship.nix
     ./git.nix
-    ./neovim.nix
     ./zsh.nix
     ./tmux.nix
     ./autojump.nix
