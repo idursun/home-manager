@@ -1,0 +1,63 @@
+[alias]
+	gg = "log --graph --abbrev-commit --decorate --date=relative --oneline --all"
+
+[commit]
+	gpgSign = true
+
+[core]
+	pager = "/opt/homebrew/bin/git-delta"
+
+[credential]
+	helper = "/usr/local/share/gcm-core/git-credential-manager"
+
+[credential "https://dev.azure.com"]
+	useHttpPath = true
+
+[credential "https://gh.stackoverflow.com"]
+	gitHubAuthModes = oauth
+	provider = github
+
+[filter "lfs"]
+	clean = "git-lfs clean -- %f"
+	process = "git-lfs filter-process"
+	required = true
+	smudge = "git-lfs smudge -- %f"
+
+[gpg]
+	format = "ssh"
+
+[gpg "ssh"]
+	allowedSignersFile = "~/.ssh/allowed_signers"
+
+[init]
+	defaultBranch = "main"
+
+[interactive]
+	diffFilter = "/opt/homebrew/bin/delta --color-only"
+
+[merge]
+	tool = "code"
+
+[mergetool "code"]
+	cmd = "code --wait --merge $REMOTE $LOCAL $BASE $MERGED"
+
+[pull]
+	ff = "only"
+	rebase = true
+
+[rebase]
+	autosquash = true
+
+[remote "origin"]
+	prune = true
+
+[user]
+	email = "ibrahim@dursun.cc"
+	name = "Ibrahim Dursun"
+	signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBc0shyBJNxba3uD0zZHG0aLIUR0CIx/Tef5dmHcefsE stack-mac"
+
+[includeIf "gitdir:~/repositories/"]
+	path = "~/.config/git/git_include_repositories"
+
+[includeIf "gitdir:~/workspace/"]
+	path = "~/.config/git/git_include_workspace"

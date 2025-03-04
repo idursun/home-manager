@@ -1,0 +1,4 @@
+[user]
+	email = "ibrahim@dursun.cc"
+	name = "Ibrahim Dursun"
+	signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBc0shyBJNxba3uD0zZHG0aLIUR0CIx/Tef5dmHcefsE stack-mac"
