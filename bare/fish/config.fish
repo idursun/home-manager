@@ -3,6 +3,7 @@ if status is-interactive
 end
 
 set -gx EDITOR nvim
+bind -M insert \cr history-pager
 
 fish_add_path -gP "/usr/local/bin" "/opt/homebrew/bin" "/opt/homebrew/sbin" "$HOME/go/bin"
 
