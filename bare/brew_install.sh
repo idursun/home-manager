@@ -5,6 +5,7 @@ brew install fish \
   neovim \
   tmux \
   rg \
+  autojump \
   git-delta \
   jj \
   fzf \

@@ -7,6 +7,8 @@ bind -M insert \cr history-pager
 
 fish_add_path -gP "/usr/local/bin" "/opt/homebrew/bin" "/opt/homebrew/sbin" "$HOME/go/bin"
 
+[ -f /opt/homebrew/share/autojump/autojump.fish ]; and source /opt/homebrew/share/autojump/autojump.fish
+
 # Colorscheme: ayu Mirage
 set -U fish_color_normal CBCCC6
 set -U fish_color_command 5CCFE6
