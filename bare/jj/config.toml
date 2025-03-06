@@ -1,0 +1,17 @@
+[user]
+name = "ibrahim dursun"
+email = "ibrahim@dursun.cc"
+
+[git]
+auto-local-bookmark = true
+
+[ui]
+default-command = "log"
+#diff.tool = "delta"
+diff-editor = ":builtin"
+#diff-editor = ["nvim", "-c", "DiffEditor $left $right $output"]
+
+[signing]
+behavior = "own"
+backend = "ssh"
+key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBc0shyBJNxba3uD0zZHG0aLIUR0CIx/Tef5dmHcefsE"
