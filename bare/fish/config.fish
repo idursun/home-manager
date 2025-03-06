@@ -1,13 +1,14 @@
-if status is-interactive
-    # Commands to run in interactive sessions can go here
-end
-
 set -gx EDITOR nvim
-bind -M insert \cr history-pager
 
 fish_add_path -gP "/usr/local/bin" "/opt/homebrew/bin" "/opt/homebrew/sbin" "$HOME/go/bin"
 
-[ -f /opt/homebrew/share/autojump/autojump.fish ]; and source /opt/homebrew/share/autojump/autojump.fish
+if status is-interactive
+    # Commands to run in interactive sessions can go here
+    fzf --fish | source
+    [ -f /opt/homebrew/share/autojump/autojump.fish ]; and source /opt/homebrew/share/autojump/autojump.fish
+end
+
+bind -M insert \cr history-pager
 
 # Colorscheme: ayu Mirage
 set -U fish_color_normal CBCCC6
