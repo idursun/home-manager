@@ -15,8 +15,7 @@ let mapleader = " "
 
 set surround
 set highlightedyank
-set sneak
-set nerdtree
+set multiple-cursors
 
 " Easymotion settings
 set easymotion
